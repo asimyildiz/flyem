@@ -13,11 +13,11 @@ Spring Boot Actuator package is used to monitor health of the application (port:
 Gradle is being used as build automation tool
 
 in order to test the services on local machine:
-> Run : "bootRun" gradle task of application
-> Swagger : http://localhost:8080/swagger-ui.html
-> OpenAPI V3 Docs : http://localhost:8080/v3/api-docs
-> Greeting Service : curl 'http://localhost:8080/greeting?name=ASIM'
-> Actuator : http://localhost:9090/actuator/health
+- Run : "bootRun" gradle task of application
+- Swagger : http://localhost:8080/swagger-ui.html
+- OpenAPI V3 Docs : http://localhost:8080/v3/api-docs
+- Greeting Service : curl 'http://localhost:8080/greeting?name=ASIM'
+- Actuator : http://localhost:9090/actuator/health
 
 # development packages
 lombok is being used to minimize/remove the boilerplate code by using annotations
