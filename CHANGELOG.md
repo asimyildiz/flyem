@@ -2,7 +2,12 @@
 
 ## History
 
-### v0.0.2-SNAPSHOT (CURRENT RELEASE)
+### v0.0.3-SNAPSHOT (CURRENT RELEASE)
+
+* Add Docker for containerization of the current Spring Boot Application
+* `#7` : Add an optimized Dockerfile which extracts the layers from jar file for faster build and start up times
+
+### v0.0.2-SNAPSHOT (PREVIOUS RELEASE)
 
 * Start adding javadoc comments to code, add API documentation and Swagger for the current Spring Boot Application
 * `#4` : Add javadoc comments to code
@@ -21,7 +26,6 @@
 
 ### (NEXT RELEASEs)
 
-* Dockerize the application
 * Run the application on Kubernetes (using minikube with kubectl on local machine)
 * Add a new Search microservice with it's tests
 * Add Cassandra or Redis as Backend

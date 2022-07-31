@@ -40,8 +40,16 @@ Spring Boot Test package is being used for testing.
 Jupiter JUnit extension is being used for test execution.
 !Code Coverage will be measured and added later
 
-# deployment
-Containerization will be added using Docker later
+# containerization
+Docker is being used for containerization
+Spring Boot's fat JAR which includes all the layers is extracted to divide external and internal dependencies.
+It has 3 layers. All the application resources fit into two layers. 
+If the application dependencies do not change, the first layer (from BOOT-INF/lib) need not change, so the build is faster and the startup of the container at runtime if also faster, as long as the base layers are already cached. 
+In order to build the docker file, you need to provide the current application version to docker build command which will be automated with CI/CD pipeline integration later on:
+- DOCKER_BUILDKIT=1 docker build -t com/flyem . --build-arg APPLICATION_VERSION=service-0.0.3-SNAPSHOT
+- docker run -p 8080:8080 -p 9090:9090 com/flyem --name flyem
+
+# orchestration
 Kubernetes will be added as orchestrator later
 
 # CI/CD pipeline
