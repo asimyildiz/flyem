@@ -2,7 +2,12 @@
 
 ## History
 
-### v0.0.3-SNAPSHOT (CURRENT RELEASE)
+### v0.0.4-SNAPSHOT (CURRENT RELEASE)
+
+* Add Kubernetes as orchestrator using the Docker image of our current Spring Boot Application
+* `#8` : Create a deployment YAML file that Kubernetes uses to run the service, add steps into README.md file
+
+### v0.0.3-SNAPSHOT (PREVIOUS RELEASE)
 
 * Add Docker for containerization of the current Spring Boot Application
 * `#7` : Add an optimized Dockerfile which extracts the layers from jar file for faster build and start up times
@@ -26,7 +31,6 @@
 
 ### (NEXT RELEASEs)
 
-* Run the application on Kubernetes (using minikube with kubectl on local machine)
 * Add a new Search microservice with it's tests
 * Add Cassandra or Redis as Backend
 * Add RabbitMQ or Kafka for interservice communication
