@@ -67,7 +67,8 @@ First we must start minikube and wait it to start up:
 
 After we start minikube, we can test it with kubectl:
 - kubectl cluster-info
-Kubernetes control plane is running at https://127.0.0.1:${randomPort}\
+
+Kubernetes control plane is running at https://127.0.0.1:${randomPort} \
 CoreDNS is running at https://127.0.0.1:${randomPort}/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
 
 Then we need to create our deployment.yaml file to configure kubernetes for our project:
