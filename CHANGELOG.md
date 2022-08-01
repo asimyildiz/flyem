@@ -1,8 +1,13 @@
 # CHANGELOG
 
 ## History
+### v0.0.5-SNAPSHOT (CURRENT RELEASE)
 
-### v0.0.4-SNAPSHOT (CURRENT RELEASE)
+* Add logging mechanism for our current Spring Boot Application 
+* `#9` : Add step by step installation and running of ELK stack into README.md file. Add sample configuration files for ELK stack.
+* `#10`: Add logging using "org.slf4j.Logger" package with a basic configuration
+
+### v0.0.4-SNAPSHOT (PREVIOUS RELEASE)
 
 * Add Kubernetes as orchestrator using the Docker image of our current Spring Boot Application
 * `#8` : Create a deployment YAML file that Kubernetes uses to run the service, add steps into README.md file
