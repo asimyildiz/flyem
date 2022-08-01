@@ -1,0 +1,12 @@
+02-08-2022 01:05:12.727 [main] INFO  com.flyem.service.ServiceApplication.logStarting - Starting ServiceApplication using Java 17.0.4 on ASIMs-MacBook-Air.local with PID 10995 (/Users/asimyildiz/Development/microservices/service/build/classes/java/main started by asimyildiz in /Users/asimyildiz/Development/microservices/service)
+02-08-2022 01:05:12.745 [main] INFO  com.flyem.service.ServiceApplication.logStartupProfileInfo - No active profile set, falling back to 1 default profile: "default"
+02-08-2022 01:05:19.710 [main] INFO  com.flyem.service.ServiceApplication.logStarted - Started ServiceApplication in 7.907 seconds (JVM running for 9.005)
+02-08-2022 01:07:35.290 [main] INFO  com.flyem.service.ServiceApplication.logStarting - Starting ServiceApplication using Java 17.0.4 on ASIMs-MacBook-Air.local with PID 11434 (/Users/asimyildiz/Development/microservices/service/build/classes/java/main started by asimyildiz in /Users/asimyildiz/Development/microservices/service)
+02-08-2022 01:07:35.294 [main] INFO  com.flyem.service.ServiceApplication.logStartupProfileInfo - No active profile set, falling back to 1 default profile: "default"
+02-08-2022 01:07:38.982 [main] INFO  com.flyem.service.ServiceApplication.logStarted - Started ServiceApplication in 4.3 seconds (JVM running for 4.922)
+02-08-2022 01:07:48.974 [http-nio-8080-exec-1] INFO  c.f.s.greeting.GreetingController.sayHello - Inside /greeting handler function
+02-08-2022 01:07:48.976 [http-nio-8080-exec-1] INFO  c.f.s.greeting.GreetingController.sayHello - Response => Greeting(id=1, content=Hello from service: Anonymous)
+02-08-2022 01:21:07.441 [http-nio-8080-exec-3] INFO  c.f.s.greeting.GreetingController.sayHello - Inside /greeting handler function
+02-08-2022 01:21:07.460 [http-nio-8080-exec-3] INFO  c.f.s.greeting.GreetingController.sayHello - Response => Greeting(id=2, content=Hello from service: Anonymous)
+02-08-2022 01:27:59.722 [http-nio-8080-exec-5] INFO  c.f.s.greeting.GreetingController.sayHello - Inside /greeting handler function
+02-08-2022 01:27:59.739 [http-nio-8080-exec-5] INFO  c.f.s.greeting.GreetingController.sayHello - Response => Greeting(id=3, content=Hello from service: Anonymous)

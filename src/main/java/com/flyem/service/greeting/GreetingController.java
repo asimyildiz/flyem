@@ -1,6 +1,8 @@
 package com.flyem.service.greeting;
 
 import java.util.concurrent.atomic.AtomicLong;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,6 +17,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class GreetingController {
 
+  /**
+   * Represents the logger
+   */
+  private static final Logger log = LoggerFactory.getLogger(GreetingController.class);
   /**
    * Represents the static template message that Greeting Service uses
    */
@@ -40,9 +46,12 @@ public class GreetingController {
       defaultValue = "Anonymous"
     ) String name
   ) {
-    return new Greeting(
+    log.info("Inside /greeting handler function");
+    Greeting response = new Greeting(
       counter.incrementAndGet(),
       String.format(template, name)
     );
+    log.info("Response => {}", response);
+    return response;
   }
 }
