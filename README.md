@@ -67,7 +67,7 @@ Then we can enter our "elastic" user's name and password to login to kibana dash
 # logstash
 First we need to download the logstash client and we need to be sure that elasticsearch is running correctly as described above.\
 We can generate a password for default logstash user "logstash_system" over elasticsearch.\
-We can use the user "logstash_system" with it's password to configure logstash by updating "logstash.yml" file under config folder:\
+We can use the user "logstash_system" with it's password to configure logstash by updating "logstash.yml" file under config folder:
 - ./bin/elasticsearch-reset-password -u logstash_system --url https://localhost:9200
 
 We need to create a configuration (.conf) file inside the main folder of logstash with the name "logstash.conf".\
