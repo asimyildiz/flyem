@@ -11,14 +11,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @since 0.0.1-SNAPSHOT
  */
 @SpringBootApplication
-public class ServiceApplication {
+public class FaresApplication {
 
 	/**
 	 * Main method to run the service application
 	 * @param args Application arguments
 	 */
 	public static void main(String[] args) {
-		SpringApplication.run(ServiceApplication.class, args);
+		SpringApplication.run(FaresApplication.class, args);
 	}
 
 }
