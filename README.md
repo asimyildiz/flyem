@@ -1,28 +1,26 @@
 # flyem
-FlyEm microservice implementation using Spring Boot
+FlyEm service implementation using Spring Boot which consists of sub-projects as independent, loosely-coupled microservices.\
+All sub-projects (microservices) here uses Java-Spring Boot technology but they are being developed, tested, packaged, containerized and run independently.
 
 # links
-See [changelog](./CHANGELOG.md) for current versions and feature plans.
+See [changelog](./CHANGELOG.md) for general information about the services and feature plans.\
+See [fares-changelog](./fares/CHANGELOG.md) for fares microservice current version and feature plans.
 
-# api gateway
-'/greeting' route is used to handle a greeting request
+# sub-projects (microservices)
+fares: fares microservice implementation
 
 # usage
-Spring Boot Web package is used to create REST api endpoints (port:8080)\
-Spring Boot Actuator package is used to monitor health of the application (port:9090)\
-Gradle is being used as build automation tool
+Spring Boot Dependency Management package is used to manage dependencies and configuration automatically for all sub-packages.\
+Spring Boot Dev Tools and Spring Boot Starter Test packages are being used for all sub-projects as default dependencies which will be used for development.\
+Gradle is being used as build automation tool for the project and all sub-projects.
 
-in order to test the services on local machine:
-- Run : "bootRun" gradle task of application
-- Swagger : http://localhost:8080/swagger-ui.html
-- OpenAPI V3 Docs : http://localhost:8080/v3/api-docs
-- Greeting Service : curl 'http://localhost:8080/greeting?name=ASIM'
-- Actuator : http://localhost:9090/actuator/health
+Sub-projects can be run directly from root project:
+- Run : "bootRun" gradle task of application 
+- ./gradlew :fares:bootRun
 
 # development packages
-lombok is being used to minimize/remove the boilerplate code by using annotations\
-javadoc is being used for documenting the code\
-springdoc-openapi is being used to generate API documentation
+There are no default development packages used for all sub-projects by default, except Dev Tools and Starter Test packages.\
+All microservices will decide if they are going to use packages like lombok, springdocs-openapi etc.
 
 # logging
 Since we are going to implement a microservice which will eventually work together with other microservices 
@@ -80,7 +78,7 @@ We can then start logstash using the command:
 - ./bin/logstash -f logstash.conf
 
 After logstash started working correctly, we can run the gradle task "bootRun" to start testing our ELK stack.\
-We can just call our /greeting service and then check the logs from "logs/application.log" file.\
+We can just call our services where we integrate ELK stack and then check the logs from "logs/application.log" file.\
 We can also see the logs from logstash and elasticsearch running instances from terminals.\
 
 # display logs from kibana
@@ -97,15 +95,11 @@ We can check our logs from this source now:
 - http://localhost:5601/app/discover
 
 # commands
-- "application/bootRun": gradle task to run the application
-- "build/clean": gradle task to clean project build
-- "build/build": gradle task to build the project
-- "openapi/generateOpenApiDocs": gradle task to generate open api docs
-- "documentation/javadoc": gradle task to generate javadoc comments (generated under build/docs/javadoc folder)
-- "verification/test": gradle task to run tests 
+The commands can vary from microservice to microservice.\
+Please check all gradle tasks of sub-projects before you run a task.
 
 # testing
-You can run the tests by using the gradle task:
+You can run the tests by using the gradle task for every microservice:
 > "verification/test"
 
 Spring Boot Test package is being used for testing.\
@@ -117,19 +111,12 @@ Docker is being used for containerization.\
 Spring Boot's fat JAR which includes all the layers is extracted to divide external and internal dependencies.\
 It has 3 layers. All the application resources fit into two layers.\
 If the application dependencies do not change, the first layer (from BOOT-INF/lib) need not change, so the build is faster and the startup of the container at runtime if also faster, as long as the base layers are already cached.\
-In order to build the docker file, you need to provide the current application version to docker build command which will be automated with CI/CD pipeline integration later on:
-- DOCKER_BUILDKIT=1 docker build -t com/flyem . --build-arg APPLICATION_VERSION=service-0.0.4-SNAPSHOT
-- docker run -p 8080:8080 -p 9090:9090 com/flyem --name flyem
 
 Project's docker image is pushed to dockerhub. Kubernetes will pull the image from inside its Kubelets (nodes) via dockerhub.\
 In order to push the image to docker hub, we need to create a dockerhub account.\
 After creating the dockerhub account, we need to create a new repository there. Our repository is asimyildiz/flyem for this project.\
-Then we need to login to dockerhub from a terminal with our username by entering our password:
+Then we need to login to dockerhub from a terminal with our username by entering our password before we push our images:
 - docker login -u ${username}
-
-We need to tag our current image and then push it to dockerhub:
-- docker tag com/flyem:[latest|0.0.4-SNAPSHOT] asimyildiz/flyem
-- docker push asimyildiz/flyem:[latest|0.0.4-SNAPSHOT]
 
 # orchestration
 Kubernetes is being used for orchestration.\
@@ -143,20 +130,15 @@ After we start minikube, we can test it with kubectl:
 Kubernetes control plane is running at https://127.0.0.1:${randomPort} \
 CoreDNS is running at https://127.0.0.1:${randomPort}/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
 
-Then we need to create our deployment.yaml file to configure kubernetes for our project:
-- kubectl create deployment flyem --image=asimyildiz/flyem --dry-run=client -o=yaml > deployment.yaml
-- echo --- >> deployment.yaml
-- kubectl create service clusterip flyem --tcp=8080:8080 -tcp=9090:9090 --dry-run=client -o=yaml >> deployment.yaml
-
-After minikube is starting to work and before we run our deployment file, we need to first pull our docker image.
-- minikube image pull asimyildiz/flyem:[latest|0.0.4-SNAPSHOT]
+After minikube is starting to work and before we run our deployment file, we need to first pull our docker images for our microservices before we run:
+- minikube image pull asimyildiz/flyem:service-microservicename-VERSION
 
 Then we need to start our kubernetes instance and check if our instance is started to run:
-- kubectl apply -f deployment.yaml
+- kubectl apply -f k8s/deployment-microservicename.yaml
 - kubectl get all
 
 Then we need to create an ssh tunnel to the service that we have created in Kubernetes
-- kubectl port-forward svc/flyem 8080:8080 9090:9090
+- kubectl port-forward svc/microservice-servicename 8080:8080 9090:9090
 
 # CI/CD pipeline
 CI/CD pipeline will be added later

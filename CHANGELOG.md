@@ -1,7 +1,15 @@
 # CHANGELOG
 
 ## History
-### v0.0.5-SNAPSHOT (CURRENT RELEASE)
+### v0.0.6-SNAPSHOT (CURRENT RELEASE)
+
+* Use gradle sub-projects in order to implement our microservices independently. 
+* `#11`: Move our initial service and Greeting implementation as a sub-project (a new microservice) with it's own gradle and Dockerfile
+* `#12`: Update build.gradle and settings.gradle for the root project
+* `#13`: Update README and CHANGELOG for the root project
+* `#14`: Move and create Kubernetes deployment configs for microservices into root project
+
+### v0.0.5-SNAPSHOT (PREVIOUS RELEASE)
 
 * Add logging mechanism for our current Spring Boot Application 
 * `#9` : Add step by step installation and running of ELK stack into README.md file. Add sample configuration files for ELK stack.
