@@ -16,7 +16,7 @@ spec:
         app: fares
     spec:
       containers:
-      - image: asimyildiz/flyem:service-fares-0.0.1-SNAPSHOT
+      - image: asimyildiz/flyem:service-fares-0.0.2-SNAPSHOT
         name: flyem
         ports:
         - containerPort: 8080
