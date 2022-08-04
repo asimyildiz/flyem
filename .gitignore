@@ -35,3 +35,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### Disable pushing of logs ###
+logs/
