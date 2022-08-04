@@ -47,42 +47,49 @@ public class MockFareGenerationService {
         .flightNumber("FM100")
         .flightDate("01-09-22")
         .amount(200.0)
+        .currency("USD")
         .build(),
       Fare
         .builder()
         .flightNumber("FM101")
         .flightDate("01-09-22")
         .amount(180.0)
+        .currency("USD")
         .build(),
       Fare
         .builder()
         .flightNumber("FM102")
         .flightDate("01-09-22")
         .amount(150.0)
+        .currency("USD")
         .build(),
       Fare
         .builder()
         .flightNumber("FM200")
         .flightDate("02-09-22")
         .amount(110.0)
+        .currency("USD")
         .build(),
       Fare
         .builder()
         .flightNumber("FM201")
         .flightDate("02-09-22")
         .amount(100.0)
+        .currency("USD")
         .build(),
       Fare
         .builder()
         .flightNumber("FM300")
         .flightDate("03-09-22")
         .amount(120.0)
+        .currency("USD")
         .build(),
       Fare
         .builder()
         .flightNumber("FM301")
         .flightDate("03-09-22")
         .amount(100.0)
+        .currency("USD")
         .build(),
     };
     logger.info("generated, mock fares data generated");

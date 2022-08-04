@@ -60,18 +60,18 @@ Please check the root project's [README](../README.md) file for the Docker optim
 > gradle binaries are located in root project's folder. So we need to correctly handle our docker builds for our sub-projects.
 
 In order to build the docker file for fares microservice, we need to provide the current application version to docker build command and run these commands from the fares sub-project's folder:
-- DOCKER_BUILDKIT=1 docker build -t flyem/service-fares ../ -f . --build-arg APPLICATION_VERSION=fares-0.0.2-SNAPSHOT
+- DOCKER_BUILDKIT=1 docker build -t flyem/service-fares ../ -f . --build-arg APPLICATION_VERSION=fares-0.0.3-SNAPSHOT
 - docker run -p 8080:8080 -p 9090:9090 flyem/service-fares --name fares
 - docker login -u ${username}
-- docker tag flyem/service-fares asimyildiz/flyem:service-fares-0.0.2-SNAPSHOT
-- docker push asimyildiz/flyem:service-fares-0.0.2-SNAPSHOT
+- docker tag flyem/service-fares asimyildiz/flyem:service-fares-0.0.3-SNAPSHOT
+- docker push asimyildiz/flyem:service-fares-0.0.3-SNAPSHOT
 
 # orchestration
 Kubernetes is being used for orchestration.\
 Please check the root project's [README](../README.md) file for detailed Kubernetes setup guide.
 
 After minikube is starting to work and before we run our deployment file, we need to first pull our docker image.
-- minikube image pull asimyildiz/flyem:service-fares:0.0.2-SNAPSHOT
+- minikube image pull asimyildiz/flyem:service-fares:0.0.3-SNAPSHOT
 
 Then we need to start our kubernetes instance and check if our instance is started to run:
 - kubectl apply -f ../k8s/deployment-fares.yaml

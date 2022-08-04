@@ -1,7 +1,12 @@
 # CHANGELOG
 
 ## History
-### v0.0.2-SNAPSHOT (CURRENT RELEASE)
+### v0.0.3-SNAPSHOT (CURRENT RELEASE)
+
+* Add missing currency property into fare entity model
+* `#12`: Add currency into Fare entity
+
+### v0.0.2-SNAPSHOT (PREVIOUS RELEASE)
 
 * Implement Fares microservice for Flyem Spring Boot project
 * `#7` : Add Spring Boot Data JPA package with H2 in-memory database
