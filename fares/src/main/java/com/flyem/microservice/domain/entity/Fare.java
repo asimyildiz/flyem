@@ -67,4 +67,13 @@ public class Fare {
   @Setter
   @NotEmpty
   private double amount;
+
+  /**
+   * Represents the currency of the amount
+   * @since fares-0.0.3-SNAPSHOT
+   */
+  @Getter
+  @Setter
+  @NonNull
+  private String currency;
 }
