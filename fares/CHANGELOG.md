@@ -1,7 +1,16 @@
 # CHANGELOG
 
 ## History
-### v0.0.1-SNAPSHOT (CURRENT RELEASE)
+### v0.0.2-SNAPSHOT (CURRENT RELEASE)
+
+* Implement Fares microservice for Flyem Spring Boot project
+* `#7` : Add Spring Boot Data JPA package with H2 in-memory database
+* `#8` : Add fare entity model and the repository for fares microservice using JPA
+* `#9` : Add services, one to query from the repository, one to generate mock data into the repository
+* `#10`: Add controllers, one to handle requests to get a fare for a given flight, one to handle generating mock data and saving it into H2 database
+* `#11`: Configure application properties for H2 database for both environments
+
+### v0.0.1-SNAPSHOT (PREVIOUS RELEASE)
 
 * Move Greeting service as a sub-module (an independent microservice) for Flyem Spring Boot project
 * `#1` : Move current Greeting implementation as a sub-module, refactor and update class names
@@ -15,6 +24,5 @@
 
 ### (NEXT RELEASEs)
 
-* Replace Greeting service with Fares Microservice which will return fare for a flight
 * Add RabbitMQ or Kafka for interservice communication
 * Add CI/CD processes

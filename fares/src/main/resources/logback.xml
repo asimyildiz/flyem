@@ -11,7 +11,7 @@
             <Pattern> %d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%M - %msg%n </Pattern>
         </encoder>
     </appender>
-    <logger name="com.flyem.service" additivity="false" level="info">
+    <logger name="com.flyem.microservice" additivity="false" level="info">
         <appender-ref ref="SAVE-TO-FILE" />
         <appender-ref ref="STDOUT" />
     </logger>
