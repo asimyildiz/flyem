@@ -1,13 +1,17 @@
 # flyem
-FlyEm service implementation using Spring Boot which consists of sub-projects as independent, loosely-coupled microservices.\
-All sub-projects (microservices) here uses Java-Spring Boot technology but they are being developed, tested, packaged, containerized and run independently.
+FlyEm service implementation using Spring Boot which consists of sub-projects as independent, loosely-coupled microservices for FlyEm airline company.\
+All microservices here uses Java-Spring Boot technology but they are being developed, tested, packaged, containerized, deployed, run and orchestrated (scaled) independently.\
+All microservices here can be exported to different repositories easily.\
+Gradle sub-projects are used here to maintain our microservices from single repository.
 
 # links
 See [changelog](./CHANGELOG.md) for general information about the services and feature plans.\
 See [fares-changelog](./fares/CHANGELOG.md) for fares microservice current version and feature plans.
+See [search-changelog](./search/CHANGELOG.md) for search microservice current version and feature plans.
 
 # sub-projects (microservices)
 fares: fares microservice implementation
+search: search microservice implementation
 
 # usage
 Spring Boot Dependency Management package is used to manage dependencies and configuration automatically for all sub-packages.\
@@ -16,11 +20,37 @@ Gradle is being used as build automation tool for the project and all sub-projec
 
 Sub-projects can be run directly from root project:
 - Run : "bootRun" gradle task of application 
-- ./gradlew :fares:bootRun
+- ./gradlew (:fares:clean) :fares:bootRun
+- ./gradlew (:search:clean) :search:bootRun
+
+In order to run this demo effectively:
+- We need to run RabbitMQ Server first (microservices depend on it)
+- We don't need to but we can run Logstash, Elasticsearch and Kibana to check our logs
+- First we can build both of our microservices and run tests
+- Then we need to run both of our microservices (fares, search)
+- Then we can check if our microservices are running correctly by checking their healths from actuators
+- Then we need to generate some mock data for our fares microservice and for our search microservice
+- Then we can check our fares microservice by sending requests from it's swaggerui
+- Then we can check our search microservice by sending requests from it's swaggerui
+- Then we can update a fare value using it's swaggerui and check if our message broker is running correctly by getting the flight request with this fare value from it's swaggerui
+- We can also check if our logs are printed out to console and saved to logstash and can be queried from Kibana board (if ELK stack is up and running)
+
+Then:
+- We can test the same scenario above after dockerizing our microservices
+- We can test the same scenario above with kubernetes and our docker images
 
 # development packages
 There are no default development packages used for all sub-projects by default, except Dev Tools and Starter Test packages.\
 All microservices will decide if they are going to use packages like lombok, springdocs-openapi etc.
+
+# messaging
+Microservices are interacting (messaging) with other microservices using RabbitMQ that comes with AMQP package.\
+In order to run RabbitMQ on our local machine, first we need to install it. On MacOS we can install it using brew.\
+Then we need to add CLI tools and server scripts of RabbitMQ into path:
+- export PATH=$PATH:/usr/local/sbin
+
+Then we can run the RabbitMQ with:
+- brew services start rabbitmq
 
 # logging
 Since we are going to implement a microservice which will eventually work together with other microservices 

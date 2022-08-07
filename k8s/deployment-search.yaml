@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:  
+  labels:
+    app: search
+  name: search
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: search
+  strategy: {}
+  template:
+    metadata:      
+      labels:
+        app: search
+    spec:
+      containers:
+      - image: asimyildiz/flyem:service-search-0.0.1-SNAPSHOT
+        name: flyem
+        ports:
+        - containerPort: 8081
+        - containerPort: 9091        
+        imagePullPolicy: Always
+        env:
+        - name: spring.profiles.active
+          value: 'prod'        
+        resources: {}        
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:  
+  labels:
+    app: search-svc
+  name: search-svc
+spec:
+  selector:
+    app: search
+  ports:
+  - name: 8081-8081
+    port: 8081
+    protocol: TCP
+    targetPort: 8081
+  - name: 9091-9091
+    port: 9091
+    protocol: TCP
+    targetPort: 9091
+  type: ClusterIP
+status:
+  loadBalancer: {}

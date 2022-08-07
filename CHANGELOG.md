@@ -1,7 +1,15 @@
 # CHANGELOG
 
 ## History
-### v0.0.6-SNAPSHOT (CURRENT RELEASE)
+### v0.0.7-SNAPSHOT (CURRENT RELEASE)
+
+* Add Search microservice, update Fare microservice, add RabbitMQ message broker
+* `#15`: Add search microservice with it's own sub-project and rabbitmq receiver
+* `#16`: Update fare microservice, add update fare method, add rabbitmq sender
+* `#17`: Add a gradle.properties file to run gradle tasks in parallel
+* `#18`: Update README and CHANGELOG for the root project
+
+### v0.0.6-SNAPSHOT (PREVIOUS RELEASE)
 
 * Use gradle sub-projects in order to implement our microservices independently. 
 * `#11`: Move our initial service and Greeting implementation as a sub-project (a new microservice) with it's own gradle and Dockerfile

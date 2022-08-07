@@ -1,5 +1,7 @@
 package com.flyem.microservice.domain.entity;
 
+import java.util.HashMap;
+import java.util.Map;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,10 +11,8 @@ import javax.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import lombok.Setter;
 import lombok.ToString;
 
 /**
@@ -36,17 +36,14 @@ public class Fare {
    * @since fares-0.0.2-SNAPSHOT
    */
   @Id
-  @Getter
-  @Setter
   @GeneratedValue(strategy = GenerationType.AUTO)
+  @ToString.Exclude
   private Long id;
 
   /**
    * Represents the flight number of fare data
    * @since fares-0.0.2-SNAPSHOT
    */
-  @Getter
-  @Setter
   @NonNull
   private String flightNumber;
 
@@ -54,8 +51,6 @@ public class Fare {
    * Represents the flight date of fare data
    * @since fares-0.0.2-SNAPSHOT
    */
-  @Getter
-  @Setter
   @NonNull
   private String flightDate;
 
@@ -63,8 +58,6 @@ public class Fare {
    * Represents the amount of fare data
    * @since fares-0.0.2-SNAPSHOT
    */
-  @Getter
-  @Setter
   @NotEmpty
   private double amount;
 
@@ -72,8 +65,20 @@ public class Fare {
    * Represents the currency of the amount
    * @since fares-0.0.3-SNAPSHOT
    */
-  @Getter
-  @Setter
   @NonNull
   private String currency;
+
+  /**
+   * Represent toMap method to generate an object sendable by RabbitMq
+   * @return fareMessage map
+   * @since fares-0.0.4-SNAPSHOT
+   */
+  public Map<String, Object> toMap() {
+    Map<String, Object> fareMessage = new HashMap<>();
+    fareMessage.put("FLIGHT_NUMBER", flightNumber);
+    fareMessage.put("FLIGHT_DATE", flightDate);
+    fareMessage.put("AMOUNT", amount);
+    fareMessage.put("CURRENCY", currency);
+    return fareMessage;
+  }
 }

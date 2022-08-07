@@ -1,7 +1,17 @@
 # CHANGELOG
 
 ## History
-### v0.0.3-SNAPSHOT (CURRENT RELEASE)
+### v0.0.4-SNAPSHOT (CURRENT RELEASE)
+
+* Add a message broker to inform other microservices when a fare updated
+* `#13`: Add Spring Boot AMQP (Advanced Messaging Queuing Protocol) package, implement RabbitMQ sender
+* `#14`: Add a new method to Fare model to prepare data to be sent over RabbitMQ
+* `#15`: Add a PUT method (a new service) that updates a fare value to controller
+* `#16`: Add new service methods to query service in order to run get a fare by id and update it on our repository
+* `#17`: Add a new service exception to be fired when no fare data is found by id
+* `#18`: Remove unnecessary lombok annotations on Fare class
+
+### v0.0.3-SNAPSHOT (PREVIOUS RELEASE)
 
 * Add missing currency property into fare entity model
 * `#12`: Add currency into Fare entity
@@ -29,5 +39,4 @@
 
 ### (NEXT RELEASEs)
 
-* Add RabbitMQ or Kafka for interservice communication
 * Add CI/CD processes

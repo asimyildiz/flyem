@@ -17,7 +17,7 @@ public interface FaresRepository extends JpaRepository<Fare, Long> {
    * @return Fare data
    * @since fares-0.0.2-SNAPSHOT
    */
-  Fare getFareByFlightNumberAndFlightDate(
+  Fare findByFlightNumberAndFlightDate(
     String flightNumber,
     String flightDate
   );
