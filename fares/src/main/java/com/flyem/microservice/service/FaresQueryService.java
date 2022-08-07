@@ -2,6 +2,9 @@ package com.flyem.microservice.service;
 
 import com.flyem.microservice.domain.entity.Fare;
 import com.flyem.microservice.domain.repository.FaresRepository;
+
+import java.util.Optional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,11 +47,43 @@ public class FaresQueryService {
       flightNumber,
       flightDate
     );
-    Fare fare = faresRepository.getFareByFlightNumberAndFlightDate(
+    Fare fare = faresRepository.findByFlightNumberAndFlightDate(
       flightNumber,
       flightDate
     );
     logger.info("ended, with data => {}", fare);
     return fare;
+  }
+
+  /**
+   * Search for fare data with an id
+   * @param fareId fare id to search for
+   * @return Fare result
+   * @since fares-0.0.4-SNAPSHOT
+   */
+  public Optional<Fare> getFare(Long fareId) {
+    logger.info(
+      "called, with parameter fareId: {}",
+      fareId
+    );
+    Optional<Fare> fare = faresRepository.findById(
+      fareId
+    );    
+    logger.info("ended, with any data?: {}", fare.isPresent());
+    return fare;
+  }
+
+  /**
+   * Save fare data into repository
+   * @param fare fare data object
+   * @since @fares-0.0.4-SNAPSHOT
+   */
+  public void save(Fare fare) {
+    logger.info(
+      "called, with parameter fare: {}",
+      fare
+    );
+    faresRepository.save(fare);
+    logger.info("ended, fare is saved into repository");
   }
 }

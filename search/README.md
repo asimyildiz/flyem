@@ -1,34 +1,32 @@
-# flyem-fares
-FlyEm "fares" functionality microservice implementation using Spring Boot
+# flyem-search
+FlyEm "search" functionality microservice implementation using Spring Boot
 
 # links
 See [changelog](./CHANGELOG.md) for current versions and feature plans.
 
 # api gateway
-'/fares/getFare' route is used to get fare data for a given flight\
-'/mockfares/generatedummyfares' route to generate mock fares data into our repository\
-'/fares/{id}' route with PUT request is used to update fare data in our repository
+'/search/flights' route is used to search for flights\
+'/mockflights/generatedummyflights' route to generate mock flights data into our repository
 
 # usage
-Spring Boot Web package is used to create REST api endpoints (port:8080)\
-Spring Boot Actuator package is used to monitor health of the application (port:9090)\
-Spring Boot Data JPA package is used to manage our repository\
+Spring Boot Web package is used to create REST api endpoints (port:8081)\
+Spring Boot Actuator package is used to monitor health of the application (port:9091)\
 Spring Boot AMQP package is used to manage messaging between microservices using RabbitMQ\
+Spring Boot Data JPA package is used to manage our repository\
 H2 in memory database is used to store data for our repository\
 Gradle is being used as build automation tool
 
 in order to test the services on local machine:
 - Run : "bootRun" gradle task of application 
-- ./gradlew :fares:bootRun  (from root folder)
+- ./gradlew :search:bootRun  (from root folder)
 
 We can access the services and actuators using these links:
-- Create Mock Fares Data : curl 'http://localhost:8080/mockfares/generatedummyfares'
-- Get Fare Data for a given flight : curl 'http://localhost:8080/fares/getFare?flightNumber=FM100&flightDate=01-09-22'
-- Update Fare Data with id : curl -X 'PUT' 'http://localhost:8080/fares/1' -H 'accept: */*' -H 'Content-Type: application/json' -d '{"id": 1, "flightNumber": "FM100", "flightDate": "01-09-22", "amount": 225, "currency": "TRY"}'
-- Swagger : http://localhost:8080/swagger-ui.html
-- OpenAPI V3 Docs : http://localhost:8080/v3/api-docs
-- Actuator : http://localhost:9090/actuator/health
-- H2 Console to query database : http://localhost:8080/h2-console/
+- Search : curl -X POST 'http://localhost:8081/search/flights' -H 'accept: */*' -H 'Content-Type: application/json' -d '{"origin": "LAX", "destination": "DXB", "flightDate": "01-09-22"}' 
+- Create Mock Flights Data : curl 'http://localhost:8081/mockflights/generatedummyflights'
+- Swagger : http://localhost:8081/swagger-ui.html
+- OpenAPI V3 Docs : http://localhost:8081/v3/api-docs
+- Actuator : http://localhost:9091/actuator/health
+- H2 Console to query database : http://localhost:8081/h2-console/
 
 # development packages
 lombok is being used to minimize/remove the boilerplate code by using annotations\
@@ -65,26 +63,26 @@ Please check the root project's [README](../README.md) file for the Docker optim
 
 > gradle binaries are located in root project's folder. So we need to correctly handle our docker builds for our sub-projects.
 
-In order to build the docker file for fares microservice, we need to provide the current application version to docker build command and run these commands from the fares sub-project's folder:
-- DOCKER_BUILDKIT=1 docker build -t flyem/service-fares ../ -f . --build-arg APPLICATION_VERSION=fares-0.0.3-SNAPSHOT
-- docker run -p 8080:8080 -p 9090:9090 flyem/service-fares --name fares
+In order to build the docker file for search microservice, we need to provide the current application version to docker build command and run these commands from the search sub-project's folder:
+- DOCKER_BUILDKIT=1 docker build -t flyem/service-search ../ -f . --build-arg APPLICATION_VERSION=search-0.0.1-SNAPSHOT
+- docker run -p 8080:8080 -p 9090:9090 flyem/service-search --name search
 - docker login -u ${username}
-- docker tag flyem/service-fares asimyildiz/flyem:service-fares-0.0.3-SNAPSHOT
-- docker push asimyildiz/flyem:service-fares-0.0.3-SNAPSHOT
+- docker tag flyem/service-search asimyildiz/flyem:service-search-0.0.1-SNAPSHOT
+- docker push asimyildiz/flyem:service-search-0.0.1-SNAPSHOT
 
 # orchestration
 Kubernetes is being used for orchestration.\
 Please check the root project's [README](../README.md) file for detailed Kubernetes setup guide.
 
 After minikube is starting to work and before we run our deployment file, we need to first pull our docker image.
-- minikube image pull asimyildiz/flyem:service-fares:0.0.3-SNAPSHOT
+- minikube image pull asimyildiz/flyem:service-search:0.0.1-SNAPSHOT
 
 Then we need to start our kubernetes instance and check if our instance is started to run:
-- kubectl apply -f ../k8s/deployment-fares.yaml
+- kubectl apply -f ../k8s/deployment-search.yaml
 - kubectl get all
 
 Then we need to create an ssh tunnel to the service that we have created in Kubernetes
-- kubectl port-forward svc/fares-svc 8080:8080 9090:9090
+- kubectl port-forward svc/search-svc 8080:8080 9090:9090
 
 # CI/CD pipeline
 CI/CD pipeline will be added later
