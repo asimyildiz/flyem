@@ -109,7 +109,7 @@ We can then start logstash using the command:
 
 After logstash started working correctly, we can run the gradle task "bootRun" to start testing our ELK stack.\
 We can just call our services where we integrate ELK stack and then check the logs from "logs/application.log" file.\
-We can also see the logs from logstash and elasticsearch running instances from terminals.\
+We can also see the logs from logstash and elasticsearch running instances from terminals.
 
 # display logs from kibana
 We need to first check if our logs are being correctly synced to our elasticsearch client:
@@ -140,7 +140,7 @@ Jupiter JUnit extension is being used for test execution.\
 Docker is being used for containerization.\
 Spring Boot's fat JAR which includes all the layers is extracted to divide external and internal dependencies.\
 It has 3 layers. All the application resources fit into two layers.\
-If the application dependencies do not change, the first layer (from BOOT-INF/lib) need not change, so the build is faster and the startup of the container at runtime if also faster, as long as the base layers are already cached.\
+If the application dependencies do not change, the first layer (from BOOT-INF/lib) need not change, so the build is faster and the startup of the container at runtime if also faster, as long as the base layers are already cached.
 
 Project's docker image is pushed to dockerhub. Kubernetes will pull the image from inside its Kubelets (nodes) via dockerhub.\
 In order to push the image to docker hub, we need to create a dockerhub account.\
