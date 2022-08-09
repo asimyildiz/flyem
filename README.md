@@ -6,11 +6,11 @@ Gradle sub-projects are used here to maintain our microservices from single repo
 
 # links
 See [changelog](./CHANGELOG.md) for general information about the services and feature plans.\
-See [fares-changelog](./fares/CHANGELOG.md) for fares microservice current version and feature plans.
+See [fares-changelog](./fares/CHANGELOG.md) for fares microservice current version and feature plans.\
 See [search-changelog](./search/CHANGELOG.md) for search microservice current version and feature plans.
 
 # sub-projects (microservices)
-fares: fares microservice implementation
+fares: fares microservice implementation\
 search: search microservice implementation
 
 # usage
