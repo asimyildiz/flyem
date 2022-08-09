@@ -82,7 +82,7 @@ Then we need to start our kubernetes instance and check if our instance is start
 - kubectl get all
 
 Then we need to create an ssh tunnel to the service that we have created in Kubernetes
-- kubectl port-forward svc/search-svc 8080:8080 9090:9090
+- kubectl port-forward svc/search-svc 8081:8081 9091:9091
 
 # CI/CD pipeline
 CI/CD pipeline will be added later
