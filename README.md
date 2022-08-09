@@ -84,8 +84,8 @@ We can generate a password for default kibana user "kibana_system" over elastics
 > If you have other network interfaces up, you need to provide --url option or else you will see a "No subject alternative names matching IP address" to one of your ip address of your interfaces and password reset command will not work.
 
 We need to store the password for "kibana_system" user from the console.\
-We need to navigate to the url printed out to the console to complete our setup (only on our first run).\ 
-We can select to "Configure Manually" and set the ip address of elasticsearch client "https://localhost:9200".\ 
+We need to navigate to the url printed out to the console to complete our setup (only on our first run). \
+We can select to "Configure Manually" and set the ip address of elasticsearch client "https://localhost:9200". \
 Then we need to enter the username(kibana_system) and password(copied password) when we try to access elasticsearch over kibana:
 - http://localhost:5601/?code=XXXXXX
 
