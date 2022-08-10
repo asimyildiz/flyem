@@ -8,13 +8,9 @@ repositories {
 	mavenCentral()
 }
 
-ext {
-	set('testcontainersVersion', "1.17.3")
-}
-
 allprojects {
 	group = 'com.flyem'
-	version = '0.0.7-SNAPSHOT'
+	version = '0.0.8-SNAPSHOT'
 	sourceCompatibility = '17'
 }
 
@@ -28,10 +24,14 @@ subprojects {
 		mavenCentral()
 	}
 
+	ext {	  	
+	  	set('testcontainersVersion', "1.17.3")
+	}
+
 	dependencies {
-		developmentOnly 'org.springframework.boot:spring-boot-devtools:2.7.2'
-		testImplementation 'org.springframework.boot:spring-boot-starter-test:2.7.2'
-		testImplementation 'org.testcontainers:junit-jupiter:1.17.3'	
+		developmentOnly libs.spring.boot.devtools
+		testImplementation libs.spring.boot.starter.test
+		testImplementation libs.junit.jupiter
 	}
 
 	dependencyManagement {
