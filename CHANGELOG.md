@@ -1,7 +1,12 @@
 # CHANGELOG
 
 ## History
-### v0.0.7-SNAPSHOT (CURRENT RELEASE)
+### v0.0.8-SNAPSHOT (CURRENT RELEASE)
+
+* Use version catalog to manage dependencies inside gradle with groovy
+* `#19`: Add dependencies into settings.gradle as a version catalog and update all dependencies using this catalog
+
+### v0.0.7-SNAPSHOT (PREVIOUS RELEASE)
 
 * Add Search microservice, update Fare microservice, add RabbitMQ message broker
 * `#15`: Add search microservice with it's own sub-project and rabbitmq receiver

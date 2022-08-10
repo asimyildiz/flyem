@@ -5,20 +5,20 @@ plugins {
 version = '0.0.3-SNAPSHOT'	
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-actuator:2.7.2'
-	implementation 'org.springframework.boot:spring-boot-starter-web:2.7.2'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.7.2'
-	implementation 'org.springframework.boot:spring-boot-starter-amqp:2.7.2'
-	implementation 'org.springdoc:springdoc-openapi-ui:1.6.9'
-	implementation 'org.springdoc:springdoc-openapi-webmvc-core:1.6.9'
-	implementation 'org.springdoc:springdoc-openapi-javadoc:1.6.9'
-	compileOnly 'org.projectlombok:lombok:1.18.24'
-	annotationProcessor 'org.projectlombok:lombok:1.18.24'
+	implementation libs.spring.boot.starter.actuator
+	implementation libs.spring.boot.starter.web
+	implementation libs.spring.boot.starter.data.jpa
+	implementation libs.spring.boot.starter.amqp
+	implementation libs.springdoc.openapi.ui
+	implementation libs.springdoc.openapi.webmvc.core
+	implementation libs.springdoc.openapi.javadoc
+	compileOnly libs.lombok
+	annotationProcessor libs.lombok		
 
-	runtimeOnly 'com.h2database:h2'
+	runtimeOnly libs.h2
 	
-	testCompileOnly 'org.projectlombok:lombok:1.18.24'
-	testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
+	testCompileOnly libs.lombok
+	testAnnotationProcessor libs.lombok
 }
 
 bootJar {

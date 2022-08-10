@@ -1,3 +1,22 @@
 rootProject.name = 'service'
 include 'fares'
 include 'search'
+
+dependencyResolutionManagement {
+    versionCatalogs {
+        libs {
+            library('spring-boot-devtools', 'org.springframework.boot:spring-boot-devtools:2.7.2')
+            library('spring-boot-starter-test', 'org.springframework.boot:spring-boot-starter-test:2.7.2')
+            library('junit-jupiter', 'org.testcontainers:junit-jupiter:1.17.3')
+            library('spring-boot-starter-actuator', 'org.springframework.boot:spring-boot-starter-actuator:2.7.2')
+            library('spring-boot-starter-web', 'org.springframework.boot:spring-boot-starter-web:2.7.2')
+            library('spring-boot-starter-data-jpa', 'org.springframework.boot:spring-boot-starter-data-jpa:2.7.2')
+            library('spring-boot-starter-amqp', 'org.springframework.boot:spring-boot-starter-amqp:2.7.2')
+            library('springdoc-openapi-ui', 'org.springdoc:springdoc-openapi-ui:1.6.9')
+            library('springdoc-openapi-webmvc-core', 'org.springdoc:springdoc-openapi-webmvc-core:1.6.9')
+            library('springdoc-openapi-javadoc', 'org.springdoc:springdoc-openapi-javadoc:1.6.9')
+            library('lombok', 'org.projectlombok:lombok:1.18.24')
+            library('h2', 'com.h2database:h2:2.1.214')
+        }
+    }
+}
