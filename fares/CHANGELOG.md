@@ -1,7 +1,12 @@
 # CHANGELOG
 
 ## History
-### v0.0.4-SNAPSHOT (CURRENT RELEASE)
+### v0.0.5-SNAPSHOT (CURRENT RELEASE)
+
+* Use the configuration file from configserver project using Spring Cloud
+* `#19` : Add Spring Cloud Starter Config to get the configuration file over network
+
+### v0.0.4-SNAPSHOT (PREVIOUS RELEASE)
 
 * Add a message broker to inform other microservices when a fare updated
 * `#13`: Add Spring Boot AMQP (Advanced Messaging Queuing Protocol) package, implement RabbitMQ sender

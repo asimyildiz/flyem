@@ -1,7 +1,12 @@
 # CHANGELOG
 
 ## History
-### v0.0.1-SNAPSHOT (CURRENT RELEASE)
+### v0.0.2-SNAPSHOT (CURRENT RELEASE)
+
+* Use the configuration file from configserver project using Spring Cloud
+* `#9` : Add Spring Cloud Starter Config to get the configuration file over network
+
+### v0.0.1-SNAPSHOT (PREVIOUS RELEASE)
 
 * Implement Search microservice for Flyem Spring Boot project
 * `#1` : Add Spring Boot Data JPA package with H2 in-memory database (to manage a slave copy)
