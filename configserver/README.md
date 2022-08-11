@@ -2,7 +2,7 @@
 FlyEm "configserver" is the application to manage FlyEm microservices configuration files from a github repo using Spring Cloud Config Server.
 
 # spring cloud config server
-The Spring Cloud Config server is an externalized configuration server in which applications and services can deposit, access, and manage all runtime configuration properties.\ 
+The Spring Cloud Config server is an externalized configuration server in which applications and services can deposit, access, and manage all runtime configuration properties.\
 The Spring Config server also supports version control of the configuration properties.
 
 # why a config server
