@@ -8,14 +8,14 @@ The Spring Config server also supports version control of the configuration prop
 # why a config server
 For FlyEm microservices all configuration parameters were read from a property file (application.properties) packaged inside the projects.\
 This approach is good, since all properties are moved out of code to a property file.\
-However, when microservices are moved from one environment to another, these properties need to undergo changes, which require an application re-build.\ 
+However, when microservices are moved from one environment to another, these properties need to undergo changes, which require an application re-build.\
 This is violation of one of the Twelve-Factor application principles, which advocate one-time build and moving of the binaries across environments.
 
 # setup
 Configuration files are added into another github [repo](https://github.com/asimyildiz/flyem-config)\
 This github repo is added as a git submodule into this project.\
 All microservices point to a central server to get the required configuration parameters.\
-The microservices then locally cache these parameters to improve performance.\ 
+The microservices then locally cache these parameters to improve performance.\
 The Config server propagates the configuration state changes to all subscribed microservices so that the local cache's state can be updated with the latest changes.\
 The Config server also uses profiles to resolve values specific to an environment.
 
