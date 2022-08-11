@@ -2,30 +2,36 @@
 FlyEm service implementation using Spring Boot which consists of sub-projects as independent, loosely-coupled microservices for FlyEm airline company.\
 All microservices here uses Java-Spring Boot technology but they are being developed, tested, packaged, containerized, deployed, run and orchestrated (scaled) independently.\
 All microservices here can be exported to different repositories easily.\
-Gradle sub-projects are used here to maintain our microservices from single repository.
+Gradle sub-projects are used here to maintain our microservices from single repository.\
+Spring Cloud Config Server is being used to manage configuration files of microservices independently
 
 # links
 See [changelog](./CHANGELOG.md) for general information about the services and feature plans.\
+See [configserver-changelog](./configserver/CHANGELOG.md) for config server application.\
 See [fares-changelog](./fares/CHANGELOG.md) for fares microservice current version and feature plans.\
 See [search-changelog](./search/CHANGELOG.md) for search microservice current version and feature plans.
 
 # sub-projects (microservices)
+configserver: configuration management using Spring Cloud\
 fares: fares microservice implementation\
 search: search microservice implementation
 
 # usage
 Spring Boot Dependency Management package is used to manage dependencies and configuration automatically for all sub-packages.\
 Spring Boot Dev Tools and Spring Boot Starter Test packages are being used for all sub-projects as default dependencies which will be used for development.\
+Spring Cloud package is used to apply 12 factor application principles to the microservices.\
 Gradle is being used as build automation tool for the project and all sub-projects.
 
 Sub-projects can be run directly from root project:
 - Run : "bootRun" gradle task of application 
+- ./gradlew (:configserver:clean) :configserver:bootRun (this package needs to be run first)
 - ./gradlew (:fares:clean) :fares:bootRun
 - ./gradlew (:search:clean) :search:bootRun
 
 In order to run this demo effectively:
 - We need to run RabbitMQ Server first (microservices depend on it)
 - We don't need to but we can run Logstash, Elasticsearch and Kibana to check our logs
+- We need to build configserver project first because microservices is using it to get their configuration files
 - First we can build both of our microservices and run tests
 - Then we need to run both of our microservices (fares, search)
 - Then we can check if our microservices are running correctly by checking their healths from actuators
@@ -40,7 +46,7 @@ Then:
 - We can test the same scenario above with kubernetes and our docker images
 
 # development packages
-There are no default development packages used for all sub-projects by default, except Dev Tools and Starter Test packages.\
+There are no default development packages used for all sub-projects by default, except Dev Tools and Starter Test packages and Spring Cloud package.\
 All microservices will decide if they are going to use packages like lombok, springdocs-openapi etc.
 
 # messaging

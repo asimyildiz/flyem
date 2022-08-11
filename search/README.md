@@ -13,10 +13,13 @@ Spring Boot Web package is used to create REST api endpoints (port:8081)\
 Spring Boot Actuator package is used to monitor health of the application (port:9091)\
 Spring Boot AMQP package is used to manage messaging between microservices using RabbitMQ\
 Spring Boot Data JPA package is used to manage our repository\
+Spring Cloud Starter Config package is used to get configuration file from another Spring application which uses Spring Cloud Config Server package\
 H2 in memory database is used to store data for our repository\
 Gradle is being used as build automation tool
 
 in order to test the services on local machine:
+- We need to first start "configserver" application which manages the configuration files
+- ./gradlew :configserver:bootRun (from root folder)
 - Run : "bootRun" gradle task of application 
 - ./gradlew :search:bootRun  (from root folder)
 
@@ -64,18 +67,18 @@ Please check the root project's [README](../README.md) file for the Docker optim
 > gradle binaries are located in root project's folder. So we need to correctly handle our docker builds for our sub-projects.
 
 In order to build the docker file for search microservice, we need to provide the current application version to docker build command and run these commands from the search sub-project's folder:
-- DOCKER_BUILDKIT=1 docker build -t flyem/service-search ../ -f . --build-arg APPLICATION_VERSION=search-0.0.1-SNAPSHOT
+- DOCKER_BUILDKIT=1 docker build -t flyem/service-search ../ -f . --build-arg APPLICATION_VERSION=search-0.0.2-SNAPSHOT
 - docker run -p 8080:8080 -p 9090:9090 flyem/service-search --name search
 - docker login -u ${username}
-- docker tag flyem/service-search asimyildiz/flyem:service-search-0.0.1-SNAPSHOT
-- docker push asimyildiz/flyem:service-search-0.0.1-SNAPSHOT
+- docker tag flyem/service-search asimyildiz/flyem:service-search-0.0.2-SNAPSHOT
+- docker push asimyildiz/flyem:service-search-0.0.2-SNAPSHOT
 
 # orchestration
 Kubernetes is being used for orchestration.\
 Please check the root project's [README](../README.md) file for detailed Kubernetes setup guide.
 
 After minikube is starting to work and before we run our deployment file, we need to first pull our docker image.
-- minikube image pull asimyildiz/flyem:service-search:0.0.1-SNAPSHOT
+- minikube image pull asimyildiz/flyem:service-search:0.0.2-SNAPSHOT
 
 Then we need to start our kubernetes instance and check if our instance is started to run:
 - kubectl apply -f ../k8s/deployment-search.yaml

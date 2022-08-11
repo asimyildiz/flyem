@@ -2,7 +2,7 @@ plugins {
 	id 'org.springdoc.openapi-gradle-plugin' version '1.3.4'	
 }
 
-version = '0.0.3-SNAPSHOT'	
+version = '0.0.4-SNAPSHOT'	
 
 dependencies {
 	implementation libs.spring.boot.starter.actuator
@@ -13,7 +13,8 @@ dependencies {
 	implementation libs.springdoc.openapi.webmvc.core
 	implementation libs.springdoc.openapi.javadoc
 	compileOnly libs.lombok
-	annotationProcessor libs.lombok		
+	annotationProcessor libs.lombok
+	implementation libs.spring.cloud.starter.config
 
 	runtimeOnly libs.h2
 	

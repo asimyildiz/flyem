@@ -1,7 +1,15 @@
 # CHANGELOG
 
 ## History
-### v0.0.8-SNAPSHOT (CURRENT RELEASE)
+### v0.0.9-SNAPSHOT (CURRENT RELEASE)
+
+* Add Spring Cloud into the main project as a default package
+* `#20`: Add Spring Cloud into the main project as a default package for all sub-packages
+* `#21`: Move all configuration files, ELK stack configuration files for installation, microservices configuration files for different environments into another repo, and pull that repo as a git submodule into this project
+* `#22`: Add configserver sub-project which is using Spring Cloud Config Server package to manage configurations independently from a github repo
+* `#23`: Update microservices to get application configuration files over a network from configserver application
+
+### v0.0.8-SNAPSHOT (PREVIOUS RELEASE)
 
 * Use version catalog to manage dependencies inside gradle with groovy
 * `#19`: Add dependencies into settings.gradle as a version catalog and update all dependencies using this catalog

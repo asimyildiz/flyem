@@ -14,10 +14,13 @@ Spring Boot Web package is used to create REST api endpoints (port:8080)\
 Spring Boot Actuator package is used to monitor health of the application (port:9090)\
 Spring Boot Data JPA package is used to manage our repository\
 Spring Boot AMQP package is used to manage messaging between microservices using RabbitMQ\
+Spring Cloud Starter Config package is used to get configuration file from another Spring application which uses Spring Cloud Config Server package\
 H2 in memory database is used to store data for our repository\
 Gradle is being used as build automation tool
 
 in order to test the services on local machine:
+- We need to first start "configserver" application which manages the configuration files
+- ./gradlew :configserver:bootRun (from root folder)
 - Run : "bootRun" gradle task of application 
 - ./gradlew :fares:bootRun  (from root folder)
 
@@ -66,18 +69,18 @@ Please check the root project's [README](../README.md) file for the Docker optim
 > gradle binaries are located in root project's folder. So we need to correctly handle our docker builds for our sub-projects.
 
 In order to build the docker file for fares microservice, we need to provide the current application version to docker build command and run these commands from the fares sub-project's folder:
-- DOCKER_BUILDKIT=1 docker build -t flyem/service-fares ../ -f . --build-arg APPLICATION_VERSION=fares-0.0.3-SNAPSHOT
+- DOCKER_BUILDKIT=1 docker build -t flyem/service-fares ../ -f . --build-arg APPLICATION_VERSION=fares-0.0.4-SNAPSHOT
 - docker run -p 8080:8080 -p 9090:9090 flyem/service-fares --name fares
 - docker login -u ${username}
-- docker tag flyem/service-fares asimyildiz/flyem:service-fares-0.0.3-SNAPSHOT
-- docker push asimyildiz/flyem:service-fares-0.0.3-SNAPSHOT
+- docker tag flyem/service-fares asimyildiz/flyem:service-fares-0.0.4-SNAPSHOT
+- docker push asimyildiz/flyem:service-fares-0.0.4-SNAPSHOT
 
 # orchestration
 Kubernetes is being used for orchestration.\
 Please check the root project's [README](../README.md) file for detailed Kubernetes setup guide.
 
 After minikube is starting to work and before we run our deployment file, we need to first pull our docker image.
-- minikube image pull asimyildiz/flyem:service-fares:0.0.3-SNAPSHOT
+- minikube image pull asimyildiz/flyem:service-fares:0.0.4-SNAPSHOT
 
 Then we need to start our kubernetes instance and check if our instance is started to run:
 - kubectl apply -f ../k8s/deployment-fares.yaml
